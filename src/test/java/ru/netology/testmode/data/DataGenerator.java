@@ -44,7 +44,7 @@ public class DataGenerator {
 
     public static String getRandomPassword() {
         val password = faker.internet().password();
-        System.out.println("password " +password);
+        System.out.println("password " + password);
         return password;
     }
 

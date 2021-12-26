@@ -29,7 +29,6 @@ class AuthTest {
         var loginPage = new LoginPage();
         loginPage.login(registeredUser.getLogin(), registeredUser.getPassword());
         $("[id=root]").shouldHave(Condition.text("Личный кабинет"), Duration.ofSeconds(10));
-
     }
 
     @Test
