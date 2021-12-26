@@ -1,11 +1,15 @@
 package ru.netology.testmode.test;
 
+import com.codeborne.selenide.Condition;
 import lombok.var;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import ru.netology.testmode.page.LoginPage;
 
+import java.time.Duration;
+
+import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static ru.netology.testmode.data.DataGenerator.Registration.getRegisteredUser;
 import static ru.netology.testmode.data.DataGenerator.Registration.getUser;
@@ -24,7 +28,9 @@ class AuthTest {
     void shouldSuccessfulLoginIfRegisteredActiveUser() {
         var registeredUser = getRegisteredUser("active");
         var loginPage = new LoginPage();
-        loginPage.login(registeredUser);
+        loginPage.login(registeredUser.getLogin(), registeredUser.getPassword());
+        $("[id=root]").shouldHave(Condition.text("Личный кабинет"), Duration.ofSeconds(10));
+
     }
 
     @Test
@@ -32,7 +38,9 @@ class AuthTest {
     void shouldGetErrorIfNotRegisteredUser() {
         var notRegisteredUser = getUser("active");
         var loginPage = new LoginPage();
-        loginPage.login(notRegisteredUser);
+        loginPage.login(notRegisteredUser.getLogin(), notRegisteredUser.getPassword());
+        $("[data-test-id=error-notification").shouldHave(Condition.text("Неверно указан логин или пароль"));
+
     }
 
     @Test
@@ -40,7 +48,8 @@ class AuthTest {
     void shouldGetErrorIfBlockedUser() {
         var blockedUser = getRegisteredUser("blocked");
         var loginPage = new LoginPage();
-        loginPage.login(blockedUser);
+        loginPage.login(blockedUser.getLogin(), blockedUser.getPassword());
+        $("[data-test-id=error-notification").shouldHave(Condition.text("Пользователь заблокирован"));
     }
 
     @Test
@@ -49,7 +58,8 @@ class AuthTest {
         var registeredUser = getRegisteredUser("active");
         var wrongLogin = getRandomLogin();
         var loginPage = new LoginPage();
-        loginPage.loginWithWrongLogin(registeredUser, wrongLogin);
+        loginPage.login(wrongLogin, registeredUser.getPassword());
+        $("[data-test-id=error-notification").shouldHave(Condition.text("Неверно указан логин или пароль"));
     }
 
     @Test
@@ -58,6 +68,7 @@ class AuthTest {
         var registeredUser = getRegisteredUser("active");
         var wrongPassword = getRandomPassword();
         var loginPage = new LoginPage();
-        loginPage.loginWithWrongPassword(registeredUser, wrongPassword);
+        loginPage.login(registeredUser.getLogin(), wrongPassword);
+        $("[data-test-id=error-notification").shouldHave(Condition.text("Неверно указан логин или пароль"));
     }
 }

@@ -38,11 +38,13 @@ public class DataGenerator {
 
     public static String getRandomLogin() {
         val login = faker.name().firstName();
+        System.out.println("login " + login);
         return login;
     }
 
     public static String getRandomPassword() {
         val password = faker.internet().password();
+        System.out.println("password " +password);
         return password;
     }
 
