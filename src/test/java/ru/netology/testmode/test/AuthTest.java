@@ -20,7 +20,6 @@ class AuthTest {
 
     @BeforeEach
     void setup() throws InterruptedException {
-        Thread.sleep(15000);
         Configuration.baseUrl ="http://0.0.0.0:9999";
         open("http://0.0.0.0:9999");
     }
