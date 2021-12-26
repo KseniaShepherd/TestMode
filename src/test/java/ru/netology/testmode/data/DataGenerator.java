@@ -14,7 +14,7 @@ import static io.restassured.RestAssured.given;
 
 public class DataGenerator {
     private static final RequestSpecification requestSpec = new RequestSpecBuilder()
-            .setBaseUri("http://localhost")
+            .setBaseUri("http://http://0.0.0.0")
             .setPort(9999)
             .setAccept(ContentType.JSON)
             .setContentType(ContentType.JSON)

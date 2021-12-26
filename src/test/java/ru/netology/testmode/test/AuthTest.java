@@ -20,8 +20,8 @@ class AuthTest {
 
     @BeforeEach
     void setup() {
-        Configuration.baseUrl ="http://localhost:9999";
-        open("http://localhost:9999");
+        Configuration.baseUrl ="http://0.0.0.0:9999";
+        open("http://0.0.0.0:9999");
     }
 
     @Test
