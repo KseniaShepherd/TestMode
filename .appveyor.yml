@@ -13,4 +13,4 @@ install:
   - ps: Write-Host “Starting app-ibank application!”
 
 build_script:
-  - ./gradlew test -Dselenide.headless=true --info
+  - ./gradlew test -Dselenide.headless=true -Dselenide.baseUrl=http://127.0.0.1:9999 --info
