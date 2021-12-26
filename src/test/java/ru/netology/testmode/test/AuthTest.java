@@ -19,7 +19,8 @@ import static ru.netology.testmode.data.DataGenerator.getRandomPassword;
 class AuthTest {
 
     @BeforeEach
-    void setup() {
+    void setup() throws InterruptedException {
+        Thread.sleep(15000);
         Configuration.baseUrl ="http://0.0.0.0:9999";
         open("http://0.0.0.0:9999");
     }
