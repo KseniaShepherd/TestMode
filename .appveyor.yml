@@ -9,7 +9,6 @@ branches:
 build: off
 
 install:
-
   - java -jar ./artifacts/app-ibank_old.jar -P:profile=test &
 
 build_script:
