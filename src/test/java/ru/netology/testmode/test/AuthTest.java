@@ -1,6 +1,7 @@
 package ru.netology.testmode.test;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -19,7 +20,8 @@ class AuthTest {
 
     @BeforeEach
     void setup() {
-        open("http://127.0.0.1:9999");
+        Configuration.baseUrl ="http://localhost:9999";
+        open("http://localhost:9999");
     }
 
     @Test
