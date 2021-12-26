@@ -19,6 +19,7 @@ class AuthTest {
 
     @BeforeEach
     void setup() {
+
         open("http://0.0.0.0:9999");
     }
 
