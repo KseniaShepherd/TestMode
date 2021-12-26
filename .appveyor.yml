@@ -10,7 +10,7 @@ build: off
 
 install:
   - cmd: java -jar ./artifacts/app-ibank.jar -P:profile=test
-  - ps: Start running app-ibank application!!!
+  - ps: Write-Host “Starting app-ibank application!”
 
 build_script:
   - ./gradlew test -Dselenide.headless=true --info
