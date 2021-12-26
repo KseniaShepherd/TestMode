@@ -18,7 +18,7 @@ import static ru.netology.testmode.data.DataGenerator.getRandomPassword;
 class AuthTest {
 
     @BeforeEach
-    void setup() throws InterruptedException {
+    void setup() {
         open("http://0.0.0.0:9999");
     }
 
