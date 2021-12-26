@@ -9,8 +9,9 @@ branches:
 build: off
 
 install:
-  - cmd: java -jar ./artifacts/app-ibank.jar -P:profile=test &
+  - cmd: java -jar ./artifacts/app-ibank.jar -P:profile=test
+  - cmd: timeout 15 ping localhost
   - ps: Write-Host “Starting app-ibank application!”
 
 build_script:
-  - ./gradlew test -Dselenide.headless=true -Dselenide.baseUrl=http://localhost:9999 --info
+  - ./gradlew test -Dselenide.headless=true --info
