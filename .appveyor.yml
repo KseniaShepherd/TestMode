@@ -9,7 +9,7 @@ branches:
 build: off
 
 install:
-  - cmd: java -jar ./artifacts/app-ibank.jar -P:profile=test
+  - cmd: java -jar ./artifacts/app-ibank.jar &
   - ps: Write-Host “Starting app-ibank application!”
 
 build_script:
